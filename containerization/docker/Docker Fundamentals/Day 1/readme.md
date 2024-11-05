@@ -4,6 +4,3 @@
 # - Use the command `docker run hello-world` to start the container.
 # - Docker will download the image if you don't have it yet and then display a welcome message.
 # - Make sure Docker is installed and running.
-
-# Command:
-docker run hello-world

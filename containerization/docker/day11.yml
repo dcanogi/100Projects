@@ -1,0 +1,40 @@
+# Project 11: Multi-Container Application with Docker Compose
+# This Docker Compose file sets up an Nginx server (web service) and a PostgreSQL database (db service).
+# The web service serves a static HTML page, while the db service acts as a backend dependency.
+
+version: '3.4'
+
+services:
+  web:
+    image: nginx:alpine
+    networks:
+      - default
+    ports:
+      - "8080:80"  # Expose port 80 in the container on port 8080 on the host
+    volumes:
+      - ./web:/usr/share/nginx/html
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    networks:
+      - default
+    ports:
+      - "5432:5432"  # Expose port 5432 for PostgreSQL
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: webdb
+
+# Define the network as a bridge for container communication
+networks:
+  default:
+    driver: bridge
+
+# Define a named volume for persistent database storage
+volumes:
+  db_data:
+    driver: local

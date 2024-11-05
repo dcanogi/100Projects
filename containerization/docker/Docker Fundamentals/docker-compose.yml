@@ -1,15 +1,17 @@
 # Day 4: Create a Docker Compose file for a multi-container application.
 # Objective: Manage multiple containers with Docker Compose.
-version: 3.4
+version: "3.4"
 
 services: 
     nginx:
         image: nginx:alpine
-        ports: "100:80"
+        ports: 
+            - 100:80
         volumes:
          - /usr/share/docker/www:/www
     jenkins:
         image: jenkins/jenkins:lts-jdk17
-        ports: "101:8080"
+        ports: 
+            - 101:8080
         volumes:
          - /usr/share/docker/jenkins:/var/jenkins_home

@@ -1,0 +1,22 @@
+# Day 5: Configure Networking Between Docker Containers with Docker Compose
+# Objective: Enable communication between containers within a Docker Compose network.
+
+version: 3.4
+
+services: 
+  nginx1:
+    image: nginx
+    ports: 
+      - 81:80
+    networks: 
+      - nginx-network
+  nginx2:
+    image: nginx
+    ports: 
+      - 82:80
+    networks: 
+      - nginx-network
+
+networks:
+  nginx-network:
+    driver: bridge

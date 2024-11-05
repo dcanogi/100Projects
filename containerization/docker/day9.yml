@@ -1,0 +1,48 @@
+# Day 9: Add a Database Service to Your Multi-Service Application
+# Objective: Integrate a MongoDB database service with your existing Node.js and NGINX setup.
+version: 3.4
+
+services:
+  app:
+    image: node
+    ports:
+      - 100:3000
+    volumes:
+      - app_data:/app
+    networks:
+      - connect
+  web:
+    image: nginx
+    ports:
+      - 101:80
+    networks:
+      - connect
+    volumes:
+      - web_data:/usr/share/nginx/html
+      - ./templates:/etc/nginx/templates
+    environment:
+      - NGINX_PORT=80
+  database:
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - connect
+    volumes:
+      - db:/data/db 
+    environment:
+      - MONGO_INITDB_DATABASE=mongodb
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=securepassword9000
+
+networks:
+  connect:
+    driver: bridge
+
+volumes:
+  app_data:
+    driver: local
+  web_data:
+    driver: local
+  db:
+    driver: local

@@ -1,0 +1,13 @@
+# Day 7: Configure Environment Variables for Docker Containers
+# Objective: Set up environment variables in Docker Compose to pass configuration values to containers.
+services:
+  web:
+    image: nginx
+    volumes:
+    - ./templates:/etc/nginx/templates # For the template to configure the enviroment variables
+    - ./www:/usr/share/nginx/html # For the web resources
+    ports:
+    - "8080:99"
+    environment:
+    - NGINX_HOST=dcanogi.com
+    - NGINX_PORT=99
