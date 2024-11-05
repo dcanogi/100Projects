@@ -1,7 +1,4 @@
-# Day 10: Add a Frontend Service to Your Multi-Service Application
-# Objective: Set up a simple frontend application (e.g., React) and connect it to the Node.js backend.
-
-version: 3.4
+version: "3.4"
 
 services:
   backend:
@@ -14,8 +11,9 @@ services:
       - connect
 
   frontend:
-    context: ./dockerfiles
-    dockerfile: frontend
+    build:
+      context: .
+      dockerfile: dockerfile
     volumes:
       - front_data:/app
     networks:
@@ -32,17 +30,3 @@ volumes:
     driver: local
   front_data:
     driver: local
-
-
-
-# Dockerfile
-
-# FROM alpine:latest
-# WORKDIR /app
-# COPY package.json .
-# RUN npm install
-# COPY . .
-# RUN npm run build
-# FROM nginx:alpine
-# COPY --from=build /app/build /usr/share/nginx/html
-# EXPOSE 80

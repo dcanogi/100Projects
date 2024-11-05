@@ -1,6 +1,4 @@
-# Day 8: Build a Multi-Service Application with Docker Compose
-# Objective: Set up a Node.js backend service and connect it to an NGINX web server.
-version: 3.4
+version: "3.4"
 
 services:
   app:

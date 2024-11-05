@@ -1,5 +1,3 @@
-# Day 4: Create a Docker Compose file for a multi-container application.
-# Objective: Manage multiple containers with Docker Compose.
 version: "3.4"
 
 services: 

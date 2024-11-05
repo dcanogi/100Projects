@@ -1,0 +1,12 @@
+version: "3.4"
+
+services:
+  app:
+    image: node
+    ports:
+      - 100:3000
+    volumes:
+      - app_data:/app
+volumes:
+  app_data:
+    driver: local
