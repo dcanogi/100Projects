@@ -15,7 +15,3 @@ The objective of this project is to create a simple RESTful API service using No
 1. **Server Setup**: Configure a basic Node.js server using Express.
 2. **Define Routes**: Create endpoints for CRUD operations (Create, Read, Update, Delete).
 3. **Database Integration**: Connect the API to your chosen database and perform basic operations.
-
-## Next Steps
-- Enhance the API with middleware for error handling and data validation.
-- Implement authentication for secure access to the API.
